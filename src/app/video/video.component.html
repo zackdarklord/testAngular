@@ -1,0 +1,19 @@
+ 
+<input type="text" name="price" (keyup)="searchbyGenre($event)">
+<div class="row">
+        <div class="col-md-4" *ngFor="let v of video, let i=index">
+            <div  class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://www.vid-marketing.com/wp-content/uploads/2017/05/youtube-logo2.jpg" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">video: {{v.title}}</h5>
+                <p class="card-text">genre: {{v.genre}}</p>
+                <p class="card-text">public: {{v.public}}</p>
+                <p class="card-text">nbrShared: {{v.nbrShared}}</p>
+                 <button *ngIf="v.nbrShared==0" (click)="redirect(v.id)"> Modify </button>
+               <button *ngIf="v.public" class="btn btn-primary"(click)="increment(v)">Share</button>  
+                <!-- <button class="btn btn-info"(click)="decrement(i)" [disabled]="p.quantity==0">Buy</button> 
+                <button class="btn btn-info"(click)="deleteproduct(p.id)" >delete</button> -->
+                </div>
+            </div>
+        </div>  
+</div>

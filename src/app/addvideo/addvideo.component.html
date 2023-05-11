@@ -1,0 +1,46 @@
+<form #f="ngForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">id</label>
+      <input type="number" class="form-control" name="id" placeholder="id" [(ngModel)]="video.id" required #id="ngModel">
+    </div>
+    <div class="alert alert-danger" *ngIf="id.invalid && id.touched">
+      <p *ngIf="id.errors?.['required']">id is required</p>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">title</label>
+        <input type="text" class="form-control" name="title" placeholder="title"[(ngModel)]="video.title" required minlength="3" #title="ngModel">
+      </div>
+        <div class="alert alert-danger" *ngIf="title.invalid && title.touched">
+          <p *ngIf="title.errors?.['required']">title is required</p>
+          <p *ngIf="title.errors?.['minlength']">minimum 3</p>
+        </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">genre</label>
+        <input type="text" class="form-control" name="genre" placeholder="genre" [(ngModel)]="video.genre" required #genre="ngModel">
+      </div>
+      
+      <div class="alert alert-danger" *ngIf="genre.invalid && genre.touched">
+        <p *ngIf="genre.errors?.['required']">genre is required</p>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">public</label>
+        <input type="text" class="form-control" name="public" placeholder="public" [(ngModel)]="video.public" required min="100" #public="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">nbrShared</label>
+        <input type="number" class="form-control" name="nbrShared" placeholder="nbrShared" [(ngModel)]="video.nbrShared"  #nbrShared="ngModel">
+      </div>
+      <div class="alert alert-danger" *ngIf="nbrShared.invalid && nbrShared.touched">
+        <p *ngIf="nbrShared.errors?.['required']">quantity is required</p>
+        <p *ngIf="nbrShared.errors?.['min']">minimum 100</p>
+      </div>
+      
+    <button *ngIf="test==false" type="submit" class="btn btn-primary" [disabled]="f.invalid" (click)="ajoutervideo()">Submit</button>
+    <button *ngIf="test==true" type="submit" class="btn btn-primary" [disabled]="f.invalid" (click)="update()">update</button>
+  </form>
+{{video.id}}
+{{video.title}}
+{{video.genre}}
+{{video.public}}
+{{video.nbrShared}}
+<!-- hedhi besh ntesti si l objet 9a3ed yet3aba ou non -->
